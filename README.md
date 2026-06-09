@@ -1,14 +1,15 @@
 # API-Guard-Scanner
 
-An advanced, asynchronous Python-based security tool designed to audit API endpoints for missing critical security headers. Built with modern Python 3.13 features, `httpx`, and `Pydantic v2` following **Security by Design** principles and **OWASP API Security Top 10** best practices.
+An advanced, asynchronous Python-based security tool designed to audit API endpoints for missing critical security headers. Built with modern Python 3.13 features, `httpx`, `pydantic-settings` and `Pydantic v2` following **Security by Design** principles and **OWASP API Security Top 10** best practices.
 
 ## Key Features
 
-* **Asynchronous & High-Performance:** Powered by `asyncio` and `httpx` for fast, non-blocking parallel scanning of multiple endpoints.
-* **Security by Design:** Strict input validation via `pydantic-settings` to eliminate configuration injection risks.
-* **Sensitive Data Protection:** Safe logging mechanisms that ensure authorization tokens (e.g., JWT) never leak into stdout or log files.
-* **OWASP API Security Alignment:** Specifically targets **API10:2023 (Improper Inventory Management)** by ensuring the API baseline transport defense is properly configured.
-* **Resilient Architecture:** Implements connection pool management (`httpx.Limits`) to prevent accidental DoS on target environments and includes graceful exception handling for unstable network conditions.
+* **Object-Oriented Architecture**: Formulated around a modular, class-based design ( class) to ensure code reusability, strict encapsulation, and clean state management. `APIScanner`
+* **Asynchronous & High-Performance**: Powered by and for fast, non-blocking parallel scanning of multiple endpoints. `asyncio` `httpx`
+* **Security by Design**: Strict input and environmental validation via to eliminate configuration injection risks. `pydantic-settings`
+* **Sensitive Data Protection**: Safe logging mechanisms that ensure authorization tokens (e.g., JWT) never leak into stdout or log files.
+* **OWASP API Security Alignment**: Specifically targets **API10:2023 (Improper Inventory Management)** by ensuring the API baseline transport defense is properly configured.
+* **Resilient Architecture**: Implements connection pool management () to prevent accidental DoS on target environments and includes an automated linear retry mechanism () with graceful exception handling for unstable network conditions. `httpx.Limits` `MAX_RETRIES`
 
 ---
 
@@ -61,7 +62,7 @@ REQUEST_TIMEOUT=10.0
 ---
 
 ## Usage
-To define the specific endpoints you want to scan, modify the `endpoints_to_scan` list within the `main()` function inside s`ecurity_scanner.py`.
+To define the specific endpoints you want to scan, modify the `endpoints_to_scan` list within the `main()` function inside `security_scanner.py`.
 Run the scanner:
 ```bash
 python security_scanner.py
@@ -84,5 +85,3 @@ python security_scanner.py
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-
